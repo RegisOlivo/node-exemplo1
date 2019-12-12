@@ -2,8 +2,8 @@ const Pessoa = require('../model/Pessoa');
 
 module.exports = {
     async store(req, res) {
-        const { nome, sobrenome, email, cpf } = req.body;
-        const pessoa = await Pessoa.create({ nome, sobrenome, email, cpf });
+        const { nome, sobrenome, email, cpf, login, password } = req.body;
+        const pessoa = await Pessoa.create({ nome, sobrenome, email, cpf, login, password });
         return res.json(pessoa);
     },
 
@@ -22,6 +22,8 @@ module.exports = {
     },
 
     async delete(req, res) {
-
+        const { id } = req.params;
+        const pessoa = await Pessoa.findByIdAndDelete(id);
+        return res.json(pessoa);
     }
 }

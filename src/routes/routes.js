@@ -45,8 +45,12 @@ router.get('/pacote/:id', pacoteController.show);
 
 //PUT
 router.put('/instituicao/:id', instituicaoController.update);
+router.put('/evento/:id', eventoController.update);
 
 //DELETE
 router.delete('/instituicao/:id', instituicaoController.delete);
+router.delete('/evento/:id', eventoController.delete);
+router.delete('/atividade/:id', atividadeController.delete);
+router.delete('/pessoa/:id', pessoaController.delete);
 
 module.exports = router;

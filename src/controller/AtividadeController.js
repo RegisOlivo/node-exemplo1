@@ -5,12 +5,9 @@ module.exports = {
     async store(req, res) {
         //const { id } = req.params;
         const atividade = req.body;
-
         console.log(atividade)
-
         const evento = await Evento.findById(atividade.evento);
         if (!evento) return res.status(400).json('Evento não foi encontrado!');
-
         return res.json(await Atividade.create(atividade));
     },
 
@@ -32,6 +29,8 @@ module.exports = {
     },
 
     async delete(req, res) {
-
+        const { id } = req.params;
+        const atividade = await Atividade.findByIdAndDelete(id);
+        return res.json(atividade);
     }
 }
